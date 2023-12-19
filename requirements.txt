@@ -1,9 +1,9 @@
 pytorch-transformers==1.2.0
-torch==1.7.0
+# torch==1.7.0
 # metric
 seqeval==0.0.5
 # training progressbar
-tqdm==4.31.1
+# tqdm==4.31.1
 # tokenization
 nltk==3.4.5
 # for rest api

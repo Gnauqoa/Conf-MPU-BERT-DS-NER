@@ -12,11 +12,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from pytorch_transformers import (WEIGHTS_NAME, AdamW, BertConfig,
-                                  BertForTokenClassification, BertTokenizer,
-                                  WarmupLinearSchedule)
+                                BertForTokenClassification, BertTokenizer,
+                                WarmupLinearSchedule)
 from torch import nn
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler,
-                              TensorDataset)
+                                TensorDataset)
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
@@ -518,12 +518,12 @@ def convert_examples_to_features_(examples, label_list, max_seq_length, tokenize
 
         features.append(
             InputFeatures(input_ids=input_ids,
-                          input_mask=input_mask,
-                          segment_ids=segment_ids,
-                          label_id=label_ids,
-                          valid_ids=valid,
-                          label_mask=label_mask,
-                          prob_id=prob_ids))
+                            input_mask=input_mask,
+                            segment_ids=segment_ids,
+                            label_id=label_ids,
+                            valid_ids=valid,
+                            label_mask=label_mask,
+                            prob_id=prob_ids))
     return features
 
 
@@ -621,7 +621,6 @@ def evaluate(model, eval_dataset, processor, eval_features_reqs, args):
 
     label_list, args.max_seq_length, tokenizer = eval_features_reqs
     eval_features = convert_examples_to_features(eval_examples, label_list, args.max_seq_length, tokenizer, TRAIN=False)
-
     logger.info("***** Running evaluation on {} set *****".format(eval_dataset))
     logger.info("  Num examples = %d", len(eval_examples))
     logger.info("  Batch size = %d", args.eval_batch_size)
